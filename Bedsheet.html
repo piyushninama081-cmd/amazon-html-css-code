@@ -1,0 +1,899 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Home Furnishing</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        background: #ffffff;
+      }
+
+      /* ================= HEADER ================= */
+
+      .header {
+        width: 100%;
+        height: 60px;
+        background: #131921;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        color: white;
+      }
+
+      .logo img {
+        width: 120px;
+      }
+
+      .location {
+        cursor: pointer;
+      }
+
+      .location p {
+        font-size: 12px;
+      }
+
+      .location h4 {
+        font-size: 15px;
+      }
+
+      .search {
+        display: flex;
+        width: 750px;
+        height: 40px;
+      }
+
+      .search select {
+        width: 130px;
+        border: none;
+        background: #e6e6e6;
+        border-radius: 4px 0 0 4px;
+        padding-left: 10px;
+      }
+
+      .search input {
+        width: 100%;
+        border: none;
+        font-size: 16px;
+        padding-left: 10px;
+      }
+
+      .search button {
+        width: 50px;
+        border: none;
+        background: #febd69;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        font-size: 20px;
+      }
+
+      .language {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+      }
+
+      .language img {
+        width: 22px;
+      }
+
+      .signin p,
+      .orders p {
+        font-size: 12px;
+      }
+
+      .signin h4,
+      .orders h4 {
+        font-size: 15px;
+      }
+
+      .cart {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      /* ================= NAVBAR ================= */
+
+      .navbar {
+        width: 100%;
+        height: 42px;
+        background: #232f3e;
+        display: flex;
+        align-items: center;
+        color: white;
+        gap: 25px;
+        padding-left: 20px;
+      }
+
+      .navbar div {
+        cursor: pointer;
+        padding: 8px;
+      }
+
+      .navbar div:hover {
+        border: 1px solid white;
+      }
+
+      /* ================= CATEGORY BAR ================= */
+
+      .category-bar {
+        width: 100%;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        gap: 35px;
+        padding-left: 20px;
+        border-bottom: 1px solid #ddd;
+        font-size: 15px;
+      }
+
+      .category-bar div {
+        cursor: pointer;
+      }
+
+      .category-bar div:hover {
+        color: #c7511f;
+      }
+      /* ================= MAIN SECTION ================= */
+
+      .main {
+        display: flex;
+        margin-top: 15px;
+      }
+
+      /* Sidebar */
+
+      .sidebar {
+        width: 230px;
+        padding: 15px;
+      }
+
+      .sidebar h3 {
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+
+      .sidebar h4 {
+        margin: 10px 0;
+      }
+
+      .sidebar p {
+        margin: 8px 0;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .sidebar p:hover {
+        color: #c7511f;
+      }
+
+      /* Right Content */
+
+      .content {
+        flex: 1;
+        padding: 0 20px;
+      }
+
+      .heading {
+        color: #e47911;
+        font-size: 52px;
+        margin-bottom: 10px;
+      }
+
+      .description {
+        color: #555;
+        line-height: 28px;
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+      /* ========== SIDEBAR FILTERS ========== */
+
+      .filter-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 25px;
+        margin-bottom: 10px;
+      }
+
+      .sidebar label {
+        display: block;
+        margin: 8px 0;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .sidebar input {
+        margin-right: 8px;
+      }
+
+      .stars {
+        color: #ff9900;
+        font-size: 18px;
+        margin: 6px 0;
+        cursor: pointer;
+      }
+
+      .discount {
+        color: #0f1111;
+        margin: 8px 0;
+        cursor: pointer;
+      }
+
+      .discount:hover,
+      .stars:hover {
+        color: #c7511f;
+      }
+      /* ========== TRENDS OF THE SEASON ========== */
+
+      .section-title {
+        font-size: 32px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        color: #111;
+      }
+
+      .trend-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .trend-card {
+        width: 180px;
+        text-align: center;
+      }
+
+      .trend-card img{
+    width:180px;
+    height:180px;
+    object-fit:cover;
+    border:1px solid #ddd;
+    border-radius:5px;
+    transition:0.3s;
+}
+
+      .trend-card img:hover {
+        transform: scale(1.05);
+      }
+
+      .trend-card h4 {
+        margin-top: 12px;
+        font-size: 18px;
+      }
+
+      .trend-card a {
+        text-decoration: none;
+        color: #007185;
+        font-size: 16px;
+      }
+
+      .trend-card a:hover {
+        color: #c7511f;
+        text-decoration: underline;
+      }
+      /* ================= BEST BRANDS ================= */
+
+.brand-section{
+    margin-top:50px;
+}
+
+.brand-title{
+    font-size:32px;
+    margin-bottom:25px;
+    color:#111;
+}
+
+.brand-container{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.brand-card{
+    width:180px;
+    text-align:center;
+}
+
+.brand-card img{
+    width:180px;
+    height:180px;
+    object-fit:cover;
+    border:1px solid #ddd;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.brand-card img:hover{
+    transform:scale(1.05);
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+
+.brand-card h4{
+    margin-top:12px;
+    font-size:18px;
+}
+
+.brand-card a{
+    text-decoration:none;
+    color:#007185;
+    font-size:16px;
+}
+
+.brand-card a:hover{
+    color:#C7511F;
+    text-decoration:underline;
+}
+/* ================= MORE CATEGORIES ================= */
+
+.more-section{
+    margin-top:50px;
+}
+
+.more-title{
+    font-size:32px;
+    margin-bottom:25px;
+    color:#111;
+}
+
+.more-container{
+    display:flex;
+    flex-wrap:wrap;
+    gap:25px;
+}
+
+.more-card{
+    width:220px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    overflow:hidden;
+    background:#fff;
+    transition:0.3s;
+}
+
+.more-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.more-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+.more-card h3{
+    padding:15px;
+    font-size:20px;
+}
+
+.more-card a{
+    display:block;
+    padding:0 15px 15px;
+    color:#007185;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.more-card a:hover{
+    color:#C7511F;
+}
+/* ================= FOOTER ================= */
+
+.back-top{
+    background:#37475A;
+    color:white;
+    text-align:center;
+    padding:15px;
+    cursor:pointer;
+    margin-top:50px;
+    font-size:18px;
+}
+
+.back-top:hover{
+    background:#485769;
+}
+
+.footer{
+    background:#232F3E;
+    color:white;
+    padding:50px;
+}
+
+.footer-container{
+    display:flex;
+    justify-content:space-evenly;
+    flex-wrap:wrap;
+}
+
+.footer-box{
+    width:220px;
+}
+
+.footer-box h3{
+    margin-bottom:20px;
+    font-size:20px;
+}
+
+.footer-box p{
+    margin:10px 0;
+    color:#DDDDDD;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.footer-box p:hover{
+    text-decoration:underline;
+}
+
+.footer-bottom{
+    background:#131A22;
+    color:#DDDDDD;
+    text-align:center;
+    padding:20px;
+    font-size:14px;
+}
+
+.footer-logo{
+    text-align:center;
+    background:#232F3E;
+    padding:20px;
+    border-top:1px solid #3a4553;
+}
+
+.footer-logo img{
+    width:120px;
+}
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+
+    <div class="header">
+      <div class="logo">
+        <img src="amazon.png" />
+      </div>
+
+      <div class="location">
+        <p>Delivering to Ahmedabad 382480</p>
+        <h4>📍 Update location</h4>
+      </div>
+
+      <div class="search">
+        <select>
+          <option>Home Furnishing</option>
+          <option>Home & Kitchen</option>
+          <option>Electronics</option>
+          <option>Fashion</option>
+        </select>
+
+        <input type="text" placeholder="Search Amazon.in" />
+
+        <button>🔍</button>
+      </div>
+
+      <div class="language">
+        <img src="india.png" />
+        <b>EN ▼</b>
+      </div>
+
+      <div class="signin">
+        <p>Hello, sign in</p>
+        <h4>Account & Lists</h4>
+      </div>
+
+      <div class="orders">
+        <p>Returns</p>
+        <h4>& Orders</h4>
+      </div>
+
+      <div class="cart">🛒 Cart</div>
+    </div>
+
+    <!-- NAVIGATION -->
+
+    <div class="navbar">
+      <div>☰ All</div>
+      <div>Fresh</div>
+      <div>Prime Video</div>
+      <div>Sell</div>
+      <div>Bestsellers</div>
+      <div>Today's Deals</div>
+      <div>Mobiles</div>
+      <div>New Releases</div>
+      <div>Prime ▼</div>
+      <div>Amazon Pay</div>
+      <div>Electronics</div>
+      <div>Customer Service</div>
+      <div>Home & Kitchen</div>
+      <div>Fashion</div>
+    </div>
+
+    <!-- CATEGORY BAR -->
+
+    <div class="category-bar">
+      <div><b>Amazon Home</b></div>
+
+      <div>Kitchen & Home Appliances ▼</div>
+
+      <div>Large Appliances ▼</div>
+
+      <div>Kitchen & Dining ▼</div>
+
+      <div>Furniture ▼</div>
+
+      <div>Home Furnishing ▼</div>
+
+      <div>Home Decor ▼</div>
+
+      <div>Home Improvement ▼</div>
+
+      <div>Garden & Outdoor ▼</div>
+
+      <div>Storage & Organisation ▼</div>
+
+      <div>Lighting ▼</div>
+    </div>
+    <!-- MAIN SECTION -->
+
+    <div class="main">
+      <!-- Sidebar -->
+
+      <div class="sidebar">
+        <h3>Category</h3>
+
+        <h4>Home & Kitchen</h4>
+
+        <p><b>Home Furnishing</b></p>
+
+        <p>Bathroom Linen</p>
+
+        <p>Bedding & Linen</p>
+
+        <p>Carpets & Rugs</p>
+
+        <p>Curtains & Accessories</p>
+
+        <p>Cushions & Cushion Covers</p>
+
+        <p>Diwan Cover Sets</p>
+
+        <p>Fabric</p>
+
+        <p>Inflatable Beds</p>
+
+        <p>Kitchen Linens</p>
+
+        <p>Slipcovers</p>
+        <!-- Prime -->
+
+        <div class="filter-title">Prime</div>
+
+        <label>
+          <input type="checkbox" />
+          Prime Eligible
+        </label>
+
+        <!-- Delivery Day -->
+
+        <div class="filter-title">Delivery Day</div>
+
+        <label>
+          <input type="checkbox" />
+          Get It Today
+        </label>
+
+        <label>
+          <input type="checkbox" />
+          Get It Tomorrow
+        </label>
+
+        <!-- Brands -->
+
+        <div class="filter-title">Brands</div>
+
+        <label>
+          <input type="checkbox" />
+          Amazon Brand - Solimo
+        </label>
+
+        <label>
+          <input type="checkbox" />
+          Amazon Brand - Symbol
+        </label>
+
+        <label>
+          <input type="checkbox" />
+          Spaces
+        </label>
+
+        <label>
+          <input type="checkbox" />
+          Story@Home
+        </label>
+
+        <label>
+          <input type="checkbox" />
+          Wakefit
+        </label>
+
+        <label>
+          <input type="checkbox" />
+          Home Sizzler
+        </label>
+
+        <!-- Customer Reviews -->
+
+        <div class="filter-title">Customer Reviews</div>
+
+        <div class="stars">★★★★★ & Up</div>
+
+        <div class="stars">★★★★☆ & Up</div>
+
+        <div class="stars">★★★☆☆ & Up</div>
+
+        <!-- Discount -->
+
+        <div class="filter-title">Discount</div>
+
+        <div class="discount">10% Off or more</div>
+
+        <div class="discount">25% Off or more</div>
+
+        <div class="discount">35% Off or more</div>
+
+        <div class="discount">50% Off or more</div>
+
+        <!-- Availability -->
+
+        <div class="filter-title">Availability</div>
+
+        <label>
+          <input type="checkbox" />
+          Include Out of Stock
+        </label>
+      </div>
+
+      <!-- Right Content -->
+
+      <div class="content">
+        <h1 class="heading">
+          Buy Home Furnishing Products Online at Amazon India
+        </h1>
+
+       <p class="description">
+    Looking to purchase home furnishing products? Amazon India offers you
+    a wide collection of bedroom, bathroom and kitchen linen, bedding,
+    carpets, cushions, curtains and much more from popular brands at
+    attractive prices.
+</p>
+
+<!-- Trends of the Season -->
+
+<h2 class="section-title">
+    Trends of the Season
+</h2>
+
+<div class="trend-container">
+
+    <div class="trend-card">
+        <img src="blanket.jpg">
+        <h4>Blankets</h4>
+        <a href="#">Shop Now</a>
+    </div>
+
+    <div class="trend-card">
+        <img src="bedsheet.jpg">
+        <h4>Bedsheets</h4>
+        <a href="#">Shop Now</a>
+    </div>
+
+    <div class="trend-card">
+        <img src="Curtains.jpg">
+        <h4>Curtains</h4>
+        <a href="#">Shop Now</a>
+    </div>
+
+    <div class="trend-card">
+        <img src="Cushions.jpg">
+        <h4>Cushions</h4>
+        <a href="#">Shop Now</a>
+    </div>
+
+    <div class="trend-card">
+        <img src="Towels.jpg">
+        <h4>Towels</h4>
+        <a href="#">Shop Now</a>
+    </div>
+
+    <div class="trend-card">
+        <img src="Carpets _&_ Rugs.jpg">
+        <h4>Carpets & Rugs</h4>
+        <a href="#">Shop Now</a>
+    </div>
+
+</div>
+<!-- Best of Furnishing Brands -->
+
+<div class="brand-section">
+
+<h2 class="brand-title">
+Best of Furnishing Brands
+</h2>
+
+<div class="brand-container">
+
+<div class="brand-card">
+<img src="spaceFurnishing.jpg">
+<h4>Spaces</h4>
+<a href="#">Shop Now</a>
+</div>
+
+<div class="brand-card">
+<img src="Bombay Dyeing.jpg">
+<h4>Bombay Dyeing</h4>
+<a href="#">Shop Now</a>
+</div>
+
+<div class="brand-card">
+<img src="Story@Home.jpg">
+<h4>Story@Home</h4>
+<a href="#">Shop Now</a>
+</div>
+
+<div class="brand-card">
+<img src="Home _Centre.jpg">
+<h4>Home Centre</h4>
+<a href="#">Shop Now</a>
+</div>
+
+<div class="brand-card">
+<img src="solimo.jpg">
+<h4>Solimo</h4>
+<a href="#">Shop Now</a>
+</div>
+
+<div class="brand-card">
+<img src="wakefit.jpg">
+<h4>Wakefit</h4>
+<a href="#">Shop Now</a>
+</div>
+
+</div>
+
+</div>
+<!-- More Categories -->
+
+<div class="more-section">
+
+<h2 class="more-title">
+Explore More Home Furnishing
+</h2>
+
+<div class="more-container">
+
+<div class="more-card">
+<img src="sofa_cover.jpg">
+<h3>Sofa Covers</h3>
+<a href="#">Shop Now</a>
+</div>
+
+<div class="more-card">
+<img src="Pillows.jpg">
+<h3>Pillows</h3>
+<a href="#">Shop Now</a>
+</div>
+
+<div class="more-card">
+<img src="Door_Mats.jpg">
+<h3>Door Mats</h3>
+<a href="#">Shop Now</a>
+</div>
+
+<div class="more-card">
+<img src="Premium _Bedsheets.jpg">
+<h3>Premium Bedsheets</h3>
+<a href="#">Shop Now</a>
+</div>
+
+<div class="more-card">
+<img src="Winter_Blankets.jpg">
+<h3>Winter Blankets</h3>
+<a href="#">Shop Now</a>
+</div>
+
+<div class="more-card">
+<img src="Comforters.jpg">
+<h3>Comforters</h3>
+<a href="#">Shop Now</a>
+</div>
+
+</div>
+
+</div>
+</div>   <!-- content ends -->
+      </div>
+    </div>
+    <!-- Back To Top -->
+
+<div class="back-top">
+Back to Top
+</div>
+
+<!-- Footer -->
+
+<div class="footer">
+
+<div class="footer-container">
+
+<div class="footer-box">
+
+<h3>Get to Know Us</h3>
+
+<p>About Amazon</p>
+<p>Careers</p>
+<p>Press Releases</p>
+<p>Amazon Science</p>
+
+</div>
+
+<div class="footer-box">
+
+<h3>Connect with Us</h3>
+
+<p>Facebook</p>
+<p>Twitter</p>
+<p>Instagram</p>
+
+</div>
+
+<div class="footer-box">
+
+<h3>Make Money with Us</h3>
+
+<p>Sell on Amazon</p>
+<p>Sell under Amazon Accelerator</p>
+<p>Protect and Build Your Brand</p>
+<p>Amazon Global Selling</p>
+
+</div>
+
+<div class="footer-box">
+
+<h3>Let Us Help You</h3>
+
+<p>Your Account</p>
+<p>Returns Centre</p>
+<p>100% Purchase Protection</p>
+<p>Help</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer-logo">
+
+<img src="amazon.png">
+
+</div>
+
+<div class="footer-bottom">
+
+© 2026 Amazon Clone | Created by Khushi ❤️
+
+</div>
+  </body>
+</html>
